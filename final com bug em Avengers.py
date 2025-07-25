@@ -10,10 +10,11 @@ from dash.dependencies import Input, Output
 
 def load_data(file_path):
     try:
-        data = pd.read_csv(file_path, encoding='ISO-8859-1')
-        print(f'Dados carregados com sucesso de {file_path}')
+        data = pd.read_csv(file_path, encoding='utf-8')
+        print(f'Dados carregados com sucesso de {file_path} (UTF-8)')
         return data
-    except:
+    except UnicodeDecodeError:
+        
         print(f'Erro ao carregar os dados de {file_path}')
         return None
         
